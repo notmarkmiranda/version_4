@@ -1,0 +1,28 @@
+$primary-gold: #C89C00;
+$secondary-grey: #5D5D5D;
+
+nav a.brand-logo {
+  color: $secondary-grey;
+  span {
+    color: $primary-gold;
+    font-weight: bold;
+  }
+}
+
+a.nav-link, .dropdown-content li > a.nav-link {
+  color: #999;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+
+@media screen and (min-width: 480px) {
+  a.nav-link, .dropdown-content li > a.nav-link {
+    font-size: 0.1em;
+    letter-spacing: 0.2em;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+}
