@@ -44,5 +44,15 @@ RSpec.describe UsersController, type: :controller do
       post :create, params: { user: attributes_for(:user) }
       expect(assigns[:user]).to eq(User.last)
     end
+
+    it "POST create - happy change database" do
+      expect { post :create, params: { user: attributes_for(:user) } }
+        .to change(User, :count).by(1)
+    end
+
+    it "POST create - sad change database" do
+      expect { post :create, params: { user: { email: "test@example.com" } } }
+        .to_not change(User, :count)
+    end
   end
 end
