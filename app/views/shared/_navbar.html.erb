@@ -13,14 +13,24 @@
       <li><a class="nav-link" href="sass.html">Sass</a></li>
       <li><a class="nav-link" href="badges.html">Components</a></li>
       <li><a class="nav-link" href="collapsible.html">Javascript</a></li>
-      <li><a class="nav-link" href="mobile.html">Mobile</a></li>
+      <% if current_user %>
+        <li><%= link_to "Log Out", "#", class: "nav-link" %></li>
+      <% else %>
+        <li><%= link_to "New Account", new_user_path, class: "nav-link" %></li>
+        <li><%= link_to "Log In", "#", class: "nav-link" %></li>
+      <% end %>
       <li><a class="nav-link dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
       <li><a class="nav-link" href="sass.html">Sass</a></li>
       <li><a class="nav-link" href="badges.html">Components</a></li>
       <li><a class="nav-link" href="collapsible.html">Javascript</a></li>
-      <li><a class="nav-link" href="mobile.html">Mobile</a></li>
+      <% if current_user %>
+        <li><%= link_to "Log Out", "#", class: "nav-link" %></li>
+      <% else %>
+        <li><%= link_to "New Account", new_user_path, class: "nav-link" %></li>
+        <li><%= link_to "Log In", "#", class: "nav-link" %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
