@@ -2,15 +2,8 @@
   <div class="col l4 offset-l4 s12">
     <h5>Create A New Account</h5>
     <%= form_for @user do |f| %>
-      <div class="input-field">
-        <%= f.text_field :email %>
-        <%= f.label :email, "E-Mail Address" %>
-      </div>
-      <div class="input-field">
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-      </div>
-        <%= f.submit "Create Account", class: "btn btn-poker" %>
+      <%= render partial: "shared/form_fields", locals: { f: f } %>
+      <%= f.submit "Create Account", class: "btn btn-poker" %>
     <% end %>
   </div>
 </div>

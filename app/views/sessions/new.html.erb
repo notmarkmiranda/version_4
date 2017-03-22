@@ -1,7 +1,9 @@
-<%= form_for :session, url: login_path do |f| %>
-  <%= f.text_field :email %>
-  <%= f.label :email, "E-Mail Address" %>
-  <%= f.password_field :password %>
-  <%= f.label :password, "Password" %>
-  <%= f.submit "Log In!" %>
-<% end %>
+<div class="row">
+  <div class="col l4 offset-l4 s12">
+    <h5>Log In</h5>
+    <%= form_for :session, url: login_path do |f| %>
+      <%= render partial: "shared/form_fields", locals: { f: f } %>
+      <%= f.submit "Log In!", class: "btn btn-poker" %>
+    <% end %>
+  </div>
+</div>
