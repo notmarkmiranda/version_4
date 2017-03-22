@@ -10,9 +10,15 @@
   </head>
 
   <body>
-  <%= render partial: "shared/navbar" %>
-  <main class="container">
-    <%= yield %>
-  </main>
+    <% flash.each do |key, value| %>
+      <script>
+      var $toastConcent = $('<div class="<%= key %>"><%= value %></div>');
+      Materialize.toast($toastConcent, 7000);
+      </script>
+    <% end %>
+    <%= render partial: "shared/navbar" %>
+    <main class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>
