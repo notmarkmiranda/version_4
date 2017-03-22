@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
   def show
-    @league = League.find(params[:id])
+    @league = League.find_by_slug(params[:id])
   end
 
   def new
@@ -10,6 +10,7 @@ class LeaguesController < ApplicationController
   def create
     @league = current_user.leagues.new(league_params!)
     if @league.save
+      @league.update(slug: @league.to_param)
       flash[:success] = "League created!"
       redirect_to @league
     end
