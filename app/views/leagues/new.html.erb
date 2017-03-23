@@ -1,5 +1,12 @@
-<%= form_for @league do |f| %>
-  <%= f.text_field :name %>
-  <%= f.label :name, "League Name" %>
-  <%= f.submit "Create League!" %>
-<% end %>
+<div class="row">
+  <div class="col l4 offset-l4 s12">
+    <h5>Create A New League</h5>
+    <%= form_for @league do |f| %>
+      <div class="input-field">
+        <%= f.text_field :name %>
+        <%= f.label :name, "League Name" %>
+      </div>
+      <%= f.submit "Create League!", class: "btn btn-poker" %>
+    <% end %>
+  </div>
+</div>
