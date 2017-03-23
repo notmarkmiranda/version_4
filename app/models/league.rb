@@ -3,7 +3,7 @@ class League < ApplicationRecord
   validates_uniqueness_of :name
   belongs_to :user
 
-  def find_by_slug(slug)
+  def self.find_by_slug(slug)
     find_by(slug: slug)
   end
 
