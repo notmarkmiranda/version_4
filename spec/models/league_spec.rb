@@ -9,4 +9,19 @@ RSpec.describe League, type: :model do
   context "relationships" do
     it { should belong_to(:user) }
   end
+
+  context "methods" do
+    before do
+      @league = create(:league, name: "Super Duper", slug: "super-duper")
+    end
+
+    it "#find_by_slug" do
+      expect(League.find_by_slug("super-duper")).to eq(@league)
+    end
+
+    it "#to_param" do
+      expect(@league.to_param).to eq("super-duper")
+    end
+
+  end
 end
