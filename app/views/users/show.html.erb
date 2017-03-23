@@ -1,2 +1,9 @@
-<%= link_to "Create League", new_league_path, class: "btn btn-poker" %>
-<h3>You have no leagues. Create one to get started.</h3>
+
+  <%= link_to "Create League", new_league_path, class: "btn btn-poker" %>
+<% if @user.no_leagues %>
+  <h3>You have no leagues. Create one to get started.</h3>
+<% else %>
+  <% @leagues.each do |league| %>
+    <p><%= league.name %></p>
+  <% end %>
+<% end %>
