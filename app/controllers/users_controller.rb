@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :require_user, only: [:show]
-  
+  before_action :require_user, only: [:show]
+
   def show
-    @user = User.find(session[:user_id])
+    @user = current_user
   end
 
   def new
