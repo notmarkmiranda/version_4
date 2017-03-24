@@ -16,6 +16,19 @@ class LeaguesController < ApplicationController
     end
   end
 
+  def edit
+    @league = League.find_by_slug(params[:id])
+  end
+
+  def update
+    @league = League.find_by_slug(params[:id])
+    if @league.update(league_params!)
+      @league.update(slug: @league.to_param)
+      flash[:success] = "League updated!"
+      redirect_to @league
+    end
+  end
+
   private
 
   def league_params!

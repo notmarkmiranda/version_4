@@ -10,15 +10,16 @@ RSpec.describe "User can edit a league name" do
   it "edits the leagues name and slug - from dashboard (index)" do
     visit dashboard_path
     within('.' + @league.slug) do
-      click_link "Edit League Name"
+      click_link "edit league name"
     end
 
     expect(current_path).to eq(edit_league_path(@league))
     fill_in "League Name", with: "Mark Miranda Super Dope League"
     click_button "Submit League Changes"
 
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("mark-miranda-super-dope-league")
-    expect(page).to_not have_content(@league.slug)
+    @league.reload
+
+    expect(current_path).to eq(league_path(@league))
+    expect(page).to have_content("Mark Miranda Super Dope League")
   end
 end

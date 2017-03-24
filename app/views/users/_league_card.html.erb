@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-content">
       <span class="card-title"><%= league.name %></span>
-      <p class="edit-league"><a href="#">edit league name</a></p>
+      <p class="edit-league"><%= link_to "edit league name", edit_league_path(league) %></p>
       <ul>
         <li><p><strong># of players: </strong> 19</p></li>
         <li><p><strong># of games: </strong> 16</p></li>
