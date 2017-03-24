@@ -68,6 +68,12 @@ main.container {
   box-shadow: 0 1px 0 0 $primary-gold !important;
 }
 
+div.card-content > p.edit-league {
+  margin-top: -10px;
+  font-size: 0.9em;
+  font-weight: 300;
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;
