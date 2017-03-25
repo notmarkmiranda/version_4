@@ -10,9 +10,12 @@ class LeaguesController < ApplicationController
   def create
     @league = current_user.leagues.new(league_params!)
     if @league.save
-      @league.update(slug: @league.to_param)
+      # @league.update(slug: @league.to_param)
       flash[:success] = "League created!"
       redirect_to @league
+    else
+      flash[:danger] = "Something went wrong!"
+      render :new
     end
   end
 
@@ -23,9 +26,12 @@ class LeaguesController < ApplicationController
   def update
     @league = League.find_by_slug(params[:id])
     if @league.update(league_params!)
-      @league.update(slug: @league.to_param)
+      # @league.update(slug: @league.to_param)
       flash[:success] = "League updated!"
       redirect_to @league
+    else
+      flash[:danger] = "Something went wrong!"
+      render :edit
     end
   end
 
@@ -34,4 +40,5 @@ class LeaguesController < ApplicationController
   def league_params!
     params.require(:league).permit(:name)
   end
+
 end
