@@ -1,2 +1,5 @@
 <h4 class="league-title"><%= @league.name %></h4>
 <div class="edit-league-show"><%= link_to "edit league name", edit_league_path(@league) %></div>
+<div>
+  Seasons: <%= @league.seasons_count %>
+</div>
