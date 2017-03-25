@@ -70,8 +70,18 @@ main.container {
 
 div.card-content > p.edit-league {
   margin-top: -10px;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+div.edit-league-show {
+  margin-top: -15px;
+  font-size: 0.8em;
   font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 @media screen and (max-width: 1000px) {
