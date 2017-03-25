@@ -45,6 +45,7 @@ main.container {
   color: $secondary-grey !important;
 }
 
+// START card tab colors
 .tabs .tab a{
     color: $primary-gold !important;
 } /*Black color to the text*/
@@ -62,16 +63,26 @@ main.container {
 .tabs .indicator {
     background-color: $primary-gold !important;
 } /*Color of underline*/
+// END card tab colors
 
 .input-field input[type=text]:focus, .input-field input[type=password]:focus {
   border-bottom: 1px solid $primary-gold !important;
   box-shadow: 0 1px 0 0 $primary-gold !important;
 }
 
+div.card-content > p.edit-league, div.edit-league-show {
+  font-size: 0.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 div.card-content > p.edit-league {
   margin-top: -10px;
-  font-size: 0.9em;
-  font-weight: 300;
+}
+
+div.edit-league-show {
+  margin-top: -15px;
 }
 
 @media screen and (max-width: 1000px) {
