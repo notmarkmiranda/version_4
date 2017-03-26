@@ -26,6 +26,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'launchy'
   gem 'pry'

@@ -1,6 +1,9 @@
 <div class="col l6 xl4 s12 <%= league.slug %>">
   <div class="card">
     <div class="card-content">
+      <div class="delete-div tooltipped" data-position="bottom" data-tooltip="are you sure? this will delete everything associated with this league">
+        <%= button_to "clear", { controller: :leagues, action: "destroy", id: league.slug }, method: :delete, form_class: "material-icons delete-icon delete-league-#{league.slug}" %>
+      </div>
       <span class="card-title"><%= league.name %></span>
       <p class="edit-league"><%= link_to "edit league name", edit_league_path(league) %></p>
       <ul>

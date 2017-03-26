@@ -10,7 +10,6 @@ class LeaguesController < ApplicationController
   def create
     @league = current_user.leagues.new(league_params!)
     if @league.save
-      # @league.update(slug: @league.to_param)
       flash[:success] = "League created!"
       redirect_to @league
     else
@@ -26,13 +25,18 @@ class LeaguesController < ApplicationController
   def update
     @league = League.find_by_slug(params[:id])
     if @league.update(league_params!)
-      # @league.update(slug: @league.to_param)
       flash[:success] = "League updated!"
       redirect_to @league
     else
       flash[:danger] = "Something went wrong!"
       render :edit
     end
+  end
+
+  def destroy
+    league = League.find_by_slug(params[:id])
+    league.destroy
+    redirect_to dashboard_path
   end
 
   private

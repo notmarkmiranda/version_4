@@ -10,4 +10,19 @@ RSpec.describe User, type: :model do
   context "relationships" do
     it { should have_many(:leagues) }
   end
+
+  context "methods" do
+    before do
+      @user = create(:user)
+    end
+
+    it "#no_leagues - true" do
+      expect(@user.no_leagues).to be(true)
+    end
+
+    it "#no_leagues - false" do
+      create(:league, user: @user)
+      expect(@user.no_leagues).to be(false)
+    end
+  end
 end

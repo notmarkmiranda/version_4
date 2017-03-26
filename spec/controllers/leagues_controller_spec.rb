@@ -64,4 +64,20 @@ RSpec.describe LeaguesController, type: :controller do
     expect(response).to render_template(:edit)
   end
 
+  it "DELETE destroy - template" do
+    league = create(:league)
+    delete :destroy, params: { id: league.slug }
+    expect(response).to redirect_to(dashboard_path)
+  end
+
+  it "DELETE destroy - database change for league" do
+    league = create(:league)
+    expect { delete :destroy, params: { id: league.slug } }.to change(League, :count).by(-1)
+  end
+
+  it "DELETE destroy - database change for season" do
+    league = create(:league)
+    expect { delete :destroy, params: { id: league.slug } }.to change(Season, :count).by(-1)
+  end
+
 end

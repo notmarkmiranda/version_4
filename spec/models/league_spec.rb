@@ -2,14 +2,14 @@ require "rails_helper"
 
 RSpec.describe League, type: :model do
   context "validations" do
-    before { create(:league) }
+    before { @leauge = create(:league) }
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
   end
 
   context "relationships" do
     it { should belong_to(:user) }
-    it { should have_many(:seasons) }
+    it { should have_many(:seasons).dependent(:destroy) }
   end
 
   context "methods" do
