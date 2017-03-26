@@ -85,6 +85,21 @@ div.edit-league-show {
   margin-top: -15px;
 }
 
+form.delete-icon > input {
+  background: transparent;
+  // color: white;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+div.delete-div {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;

@@ -4,7 +4,7 @@ class League < ApplicationRecord
   validates_uniqueness_of :name
   before_save :slugify
   belongs_to :user
-  has_many :seasons
+  has_many :seasons, dependent: :destroy
 
   def seasons_count
     seasons.count
