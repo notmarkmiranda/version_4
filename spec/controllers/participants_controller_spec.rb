@@ -3,8 +3,19 @@ require "rails_helper"
 RSpec.describe ParticipantsController, type: :controller do
   before do
     @participant = create(:participant)
+    other_particiapnt = create(:participant)
     user = @participant.user
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+
+  it "GET index - template" do
+    get :index
+    expect(response).to render_template(:index)
+  end
+
+  it "GET index - assigns" do
+    get :index
+    expect(assigns[:participants]).to eq([@participant])
   end
 
   it "GET show - template" do

@@ -1,4 +1,7 @@
 class ParticipantsController < ApplicationController
+  def index
+    @participants = current_user.participants
+  end
 
   def show
     @participant = Participant.find(params[:id])
