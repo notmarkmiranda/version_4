@@ -8,7 +8,9 @@ RSpec.describe "logged in user can create a participant" do
 
   it "creates a new participant" do
     visit root_path
-    click_link("New Player")
+    within("ul#dropdown1") do
+      click_link("New Player")
+    end
 
     expect(current_path).to eq(new_participant_path)
     fill_in "First Name", with: "John"
