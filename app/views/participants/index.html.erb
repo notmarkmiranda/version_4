@@ -1,0 +1,5 @@
+<% @participants.each do |participant| %>
+<div class="participant-<%= participant.id %>">
+  <%= link_to "edit player", edit_participant_path(participant) %>
+</div>
+<% end %>

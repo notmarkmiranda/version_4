@@ -22,9 +22,24 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def edit
+    @participant = Participant.find(params[:id])
+  end
+
+  def update
+    @participant = Participant.find(params[:id])
+    if @participant.update(participant_params!)
+      flash[:success] = "Player Updated!"
+      redirect_to @participant
+    else
+      flash[:danger] = "Something went wrong!"
+      render :edit
+    end
+  end
+
   private
 
   def participant_params!
-    params.require(:participant).permit(:first_name, :last_name, :user_id)
+    params.require(:participant).permit(:first_name, :last_name)
   end
 end
