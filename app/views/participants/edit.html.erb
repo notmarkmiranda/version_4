@@ -1,7 +1,9 @@
-<%= form_for @participant do |f| %>
-  <%= f.text_field :first_name %>
-  <%= f.label :first_name, "First Name" %>
-  <%= f.text_field :last_name %>
-  <%= f.label :last_name, "Last Name" %>
-  <%= f.submit "Update Player!" %>
-<% end %>
+<div class="row">
+  <div class="col l4 offset-l4 s12">
+    <h5>Edit Player</h5>
+    <%= form_for @participant do |f| %>
+      <%= render partial: "form_fields", locals: { f: f } %>
+      <%= f.submit "Update Player!" %>
+    <% end %>
+  </div>
+</div>
