@@ -9,7 +9,7 @@ class ParticipantsController < ApplicationController
   end
 
   def create
-    @participant = Participant.new(participant_params!)
+    @participant = current_user.participants.new(participant_params!)
     if @participant.save
       flash[:success] = "New Player Created!"
       redirect_to @participant
@@ -22,6 +22,6 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params!
-    params.require(:participant).permit(:first_name, :last_name)
+    params.require(:participant).permit(:first_name, :last_name, :user_id)
   end
 end
