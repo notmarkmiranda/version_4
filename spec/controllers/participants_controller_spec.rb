@@ -61,4 +61,25 @@ RSpec.describe ParticipantsController, type: :controller do
       post :create, params: { participant: { first_name: "John" } }
     }.to_not change(Participant, :count)
   end
+
+  it "GET edit - template" do
+    get :edit, params: { id: @participant.id }
+    expect(response).to render_template(:edit)
+  end
+
+  it "GET edit - assigns" do
+    get :edit, params: { id: @participant.id }
+    expect(assigns[:participant]).to eq(@participant)
+  end
+
+  it "PUT update - happy template" do
+    new_attrs = attributes_for(:participant)
+    patch :update, params: { id: @participant.id, participant: new_attrs}
+    expect(response).to redirect_to(participant_path(@participant))
+  end
+
+  it "PUT update - sad template" do
+    patch :update, params: { id: @participant.id, participant: { first_name: "" } }
+    expect(response).to render_template(:edit)
+  end
 end

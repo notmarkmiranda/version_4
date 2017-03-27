@@ -1,0 +1,8 @@
+<% @participants.each do |participant| %>
+  <% present(participant) do |p| %>
+    <div class="participant-<%= participant.id %>">
+      <p><%= p.full_name %></p>
+      <p><%= link_to "edit player", edit_participant_path(p) %></p>
+    </div>
+<% end %>
+<% end %>
