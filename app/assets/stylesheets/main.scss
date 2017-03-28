@@ -100,6 +100,27 @@ div.delete-div {
   display: inline
 }
 
+.picker__weekday-display {
+  background-color: $quaternary-gold !important;
+}
+
+.picker__date-display, .picker__day--selected {
+  background-color: $primary-gold !important;
+}
+
+.picker__clear:focus, .picker__close:focus, .picker__today:focus {
+  background-color: $quaternary-gold !important;
+  color: #FFF !important;
+}
+
+.picker__day--highlighted {
+  color: white !important;
+}
+
+.picker__today, .picker__close, .picker__day--today {
+  color: $primary-gold !important;
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;
