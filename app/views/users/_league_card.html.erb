@@ -6,6 +6,9 @@
       </div>
       <span class="card-title"><%= league.name %></span>
       <p class="edit-league"><%= link_to "edit league name", edit_league_path(league) %></p>
+      <div class="<%= league.slug %>-actions">
+        <%= link_to "Schedule Game", new_league_game_path(league) %>
+      </div>
       <ul>
         <li><p><strong># of players: </strong> 19</p></li>
         <li><p><strong># of games: </strong> 16</p></li>

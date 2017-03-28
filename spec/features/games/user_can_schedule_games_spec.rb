@@ -13,7 +13,7 @@ RSpec.describe "User can schedule games", type: :feature do
       click_link "Schedule Game"
     end
 
-    expect(current_path).to eq(new_league_game_path)
+    expect(current_path).to eq(new_league_game_path(@league))
     fill_in "Date", with: "17 April, 2016"
     fill_in "Buy In", with: "100"
     click_button "Schedule Game!"
