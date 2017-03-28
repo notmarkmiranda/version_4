@@ -70,14 +70,15 @@ main.container {
   box-shadow: 0 1px 0 0 $primary-gold !important;
 }
 
-div.card-content > p.edit-league, div.edit-league-show {
+div.card-content > div.league-actions > a.action, div.edit-league-show {
   font-size: 0.8em;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
+  padding-right: 10px;
 }
 
-div.card-content > p.edit-league {
+div.card-content > div.league-actions {
   margin-top: -10px;
 }
 

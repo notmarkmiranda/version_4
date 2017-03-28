@@ -9,8 +9,8 @@ RSpec.describe "User can schedule games", type: :feature do
 
   it "from the dashboard" do
     visit dashboard_path
-    within(".#{@league.slug}-actions") do
-      click_link "Schedule Game"
+    within(".league-actions") do
+      click_link "schedule game"
     end
 
     expect(current_path).to eq(new_league_game_path(@league))

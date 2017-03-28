@@ -5,9 +5,9 @@
         <%= button_to "clear", { controller: :leagues, action: "destroy", id: league.slug }, method: :delete, form_class: "material-icons delete-icon delete-league-#{league.slug}" %>
       </div>
       <span class="card-title"><%= league.name %></span>
-      <p class="edit-league"><%= link_to "edit league name", edit_league_path(league) %></p>
-      <div class="<%= league.slug %>-actions">
-        <%= link_to "Schedule Game", new_league_game_path(league) %>
+      <div class="<%= league.slug %>-actions league-actions">
+        <%= link_to "edit league name", edit_league_path(league), class: "action" %>
+        <%= link_to "schedule game", new_league_game_path(league), class: "action" %>
       </div>
       <ul>
         <li><p><strong># of players: </strong> 19</p></li>
