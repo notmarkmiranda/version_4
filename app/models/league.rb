@@ -5,6 +5,15 @@ class League < ApplicationRecord
   before_save :slugify
   belongs_to :user
   has_many :seasons, dependent: :destroy
+  has_many :games, through: :seasons
+
+  def current_season
+    seasons.where(active: true).first
+  end
+
+  def current_season_games
+    current_season.games
+  end
 
   def seasons_count
     seasons.count

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root "pages#home"
   resources :users, only: [:index, :create]
-  resources :leagues
+  resources :leagues do
+    scope module: :leagues do
+      resources :games
+    end
+  end
+  resources :games, only: [:index]
   resources :participants
 
   get "/login", to: "sessions#new", as: "login"

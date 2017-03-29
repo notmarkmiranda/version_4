@@ -70,14 +70,15 @@ main.container {
   box-shadow: 0 1px 0 0 $primary-gold !important;
 }
 
-div.card-content > p.edit-league, div.edit-league-show {
+div.card-content > div.league-actions > a.action, div.edit-league-show {
   font-size: 0.8em;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
+  padding-right: 10px;
 }
 
-div.card-content > p.edit-league {
+div.card-content > div.league-actions {
   margin-top: -10px;
 }
 
@@ -98,6 +99,27 @@ div.delete-div {
   top: 10px;
   right: 10px;
   display: inline
+}
+
+.picker__weekday-display {
+  background-color: $quaternary-gold !important;
+}
+
+.picker__date-display, .picker__day--selected {
+  background-color: $primary-gold !important;
+}
+
+.picker__clear:focus, .picker__close:focus, .picker__today:focus {
+  background-color: $quaternary-gold !important;
+  color: #FFF !important;
+}
+
+.picker__day--highlighted {
+  color: white !important;
+}
+
+.picker__today, .picker__close, .picker__day--today {
+  color: $primary-gold !important;
 }
 
 @media screen and (max-width: 1000px) {
