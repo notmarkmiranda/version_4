@@ -4,7 +4,7 @@
     <h3>You have no leagues. Create one to get started.</h3>
   <% else %>
     <% @leagues.each do |league| %>
-      <%= render partial: "league_card", locals: { league: league } %>
+      <%= render partial: "shared/league_card", locals: { league: league } %>
     <% end %>
   <% end %>
 </div>
