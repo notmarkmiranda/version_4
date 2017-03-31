@@ -4,5 +4,5 @@ class Game < ApplicationRecord
   validates_presence_of :season_id
 
   belongs_to :season
-
+  has_many :players
 end

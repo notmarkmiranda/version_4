@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe League, type: :model do
   context "validations" do
-    before { @leauge = create(:league) }
+    before { @league = create(:league) }
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
   end
