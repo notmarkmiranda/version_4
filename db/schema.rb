@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(version: 20170329210747) do
     t.index ["league_id"], name: "index_seasons_on_league_id", using: :btree
   end
 
-  create_table "users", force: :cascade do     t.string "email"
+  create_table "users", force: :cascade do |t|
+    t.string "email"
     t.string "password_digest"
   end
 

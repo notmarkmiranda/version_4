@@ -7,9 +7,10 @@ RSpec.describe Player, type: :model do
   end
 
   context "validations" do
+    before { create(:player) }
     it { should validate_presence_of(:participant_id) }
     it { should validate_presence_of(:game_id) }
-    xit { should validate_uniqueness_of(:participant_id).scoped_to(:game_id) }
+    it { should validate_uniqueness_of(:participant_id).scoped_to(:game_id) }
   end
 
   context "relationships" do

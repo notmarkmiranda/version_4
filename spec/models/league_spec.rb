@@ -16,6 +16,16 @@ RSpec.describe League, type: :model do
   context "methods" do
     before do
       @league = create(:league, name: "Super Duper", slug: "super-duper")
+      @season = @league.seasons.first
+    end
+
+    it "#current_season" do
+      expect(@league.current_season).to eq(@season)
+    end
+
+    it "#current_season_games" do
+      game = create(:game, season: @season)
+      expect(@league.current_season_games).to eq([game])
     end
 
     it "#seasons_count - 1" do
