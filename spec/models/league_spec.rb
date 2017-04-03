@@ -45,5 +45,11 @@ RSpec.describe League, type: :model do
       expect(@league.to_param).to eq("super-duper")
     end
 
+    it "#unscored_games" do
+      game = create(:game, season: @season)
+      expect(@league.unscored_games).to eq([game])
+    end
+
+
   end
 end

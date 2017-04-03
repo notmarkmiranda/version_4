@@ -33,7 +33,23 @@ RSpec.describe Leagues::Games::PlayersController, type: :controller do
     expect(response).to redirect_to new_league_game_player_path(@league, @game)
   end
 
-  it "POST create - sad template"
-  it "POST create - happy changes database"
-  it "POST create - sad changes database"
+  it "POST create - sad template" do
+    attrs = attributes_for(:player)
+    post :create, params: { league_id: @league.slug, game_id: @game.id, player: attrs }
+    expect(response).to render_template(:new)
+  end
+
+  it "POST create - happy changes database" do
+    attrs = attributes_for(:player).merge(participant_id: @participant.id)
+    expect {
+      post :create, params: { league_id: @league.slug, game_id: @game.id, player: attrs }
+    }.to change(Player, :count).by(1)
+  end
+
+  it "POST create - sad changes database" do
+    attrs = attributes_for(:player)
+    expect {
+      post :create, params: { league_id: @league.id, game_id: @game.id, player: attrs }
+    }.to_not change(Player, :count)
+  end
 end
