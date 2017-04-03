@@ -6,6 +6,16 @@ RSpec.describe Leagues::GamesController, type: :controller do
     @league = @game.league
   end
 
+  it "GET index - template" do
+    get :index, params: { league_id: @league.slug, type: "unscored" }
+    expect(response).to render_template :index
+  end
+
+  it "GET index - assigns" do
+    get :index, params: { league_id: @league.slug, type: "unscored" }
+    expect(assigns[:games]).to eq([@game])
+  end
+
   it "GET show - template" do
     get :show, params: { league_id: @league.slug, id: @game.id }
     expect(response).to render_template :show
@@ -53,5 +63,15 @@ RSpec.describe Leagues::GamesController, type: :controller do
     expect {
       post :create, params: { league_id: @league.slug, game: { buy_in: 100 } }
     }.to_not change(Game, :count)
+  end
+
+  it "PATCH update - template" do
+    patch :update, params: { league_id: @league.slug, id: @game.id, type: "finalize" }
+    expect(response).to redirect_to(league_game_path(@league, @game))
+  end
+
+  it "PATCH update - changes" do
+    patch :update, params: { league_id: @league.slug, id: @game.id, type: "finalize" }
+    expect(@game.reload.completed).to be true
   end
 end
