@@ -17,4 +17,14 @@ RSpec.describe Player, type: :model do
     it { should belong_to(:participant) }
     it { should belong_to(:game) }
   end
+
+  context "methods" do
+    before do
+      @player = create(:player)
+    end
+
+    it "#get_score" do
+      expect(@player.get_score).to eq(4.74)
+    end
+  end
 end
