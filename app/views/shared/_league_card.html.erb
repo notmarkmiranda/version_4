@@ -10,7 +10,7 @@
         <%= link_to "schedule game", new_league_game_path(league), class: "action" %>
       </div>
       <ul>
-        <li><p><strong># of players: </strong> 19</p></li>
+        <li><p><strong>Unscored Games: </strong> <%= link_to league.unscored_games.count, league_games_path(league, type: "unscored") %></p></li>
         <li><p><strong># of games: </strong> 16</p></li>
         <li><p><strong># of seasons: </strong> 2</p></li>
       </ul>

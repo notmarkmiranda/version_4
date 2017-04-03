@@ -5,6 +5,7 @@ RSpec.describe Game, type: :model do
     it { should validate_presence_of :date }
     it { should validate_presence_of :buy_in }
     it { should validate_presence_of :season_id }
+    it { should validate_presence_of :attendees }
   end
 
   context "relationships" do

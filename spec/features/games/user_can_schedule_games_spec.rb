@@ -16,6 +16,7 @@ RSpec.describe "User can schedule games", type: :feature do
     expect(current_path).to eq(new_league_game_path(@league))
     fill_in "Date", with: "17 April, 2016"
     fill_in "Buy In", with: "100"
+    fill_in "Number of Players", with: "10"
     click_button "Schedule Game!"
 
     expect(current_path).to eq(league_game_path(@league, Game.last))
@@ -31,6 +32,7 @@ RSpec.describe "User can schedule games", type: :feature do
 
     expect(current_path).to eq(new_league_game_path(@league))
     fill_in "Date", with: "17 April 2016"
+    fill_in "Number of Players", with: "10"
     fill_in "Buy In", with: "50"
     click_button "Schedule Game!"
 
