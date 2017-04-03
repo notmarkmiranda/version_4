@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403012825) do
+ActiveRecord::Schema.define(version: 20170403031344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,8 @@ ActiveRecord::Schema.define(version: 20170403012825) do
     t.integer "participant_id"
     t.integer "finishing_place"
     t.integer "game_id"
-    t.integer "additional_expense"
+    t.integer "additional_expense", default: 0
+    t.float   "score"
     t.index ["game_id"], name: "index_players_on_game_id", using: :btree
     t.index ["participant_id"], name: "index_players_on_participant_id", using: :btree
   end

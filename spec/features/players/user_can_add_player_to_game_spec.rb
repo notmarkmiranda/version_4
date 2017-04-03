@@ -54,8 +54,8 @@ RSpec.describe "User can add player to game", type: :feature do
     click_button "Finalize Game"
 
     expect(current_path).to eq(league_game_path(@league, @game))
-    expect(page).to have_content("#{@participant_2.first_name} #{@participant_2.last_name} - 2 - 1.23")
-    expect(page).to have_content("#{@participant_1.first_name} #{@participant_1.last_name} - 3 - 1.03")
+    expect(page).to have_content("#{@participant_2.first_name} #{@participant_2.last_name} - 2 - 4.71")
+    expect(page).to have_content("#{@participant_1.first_name} #{@participant_1.last_name} - 3 - 2.5")
     # scores something something
   end
 end

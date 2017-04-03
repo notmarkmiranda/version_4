@@ -11,4 +11,14 @@ class Game < ApplicationRecord
   def finished_players
     players.where.not(finishing_place: nil)
   end
+
+  def player_count
+    players.count
+  end
+
+  def score_game
+    players.each do |player|
+      player.update(score: player.get_score)
+    end
+  end
 end
