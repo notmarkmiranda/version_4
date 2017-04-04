@@ -1,4 +1,38 @@
-<% @games.each do |game| %>
-  <%= link_to "score game", new_league_game_player_path(game.league, game) %>
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Season #</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Players</th>
+      <th>Buy In</th>
+      <th>Pot Size</th>
+      <th>Winner</th>
+      <th>Runner Up</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @games.each_with_index do |g, index| %>
+      <% present(g) do |game| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td>season index + 1</td>
+          <td><%= game.formatted_date %></td>
+          <td><%= game.game_status %></td>
+          <td><%= game.players_or_attendees %></td>
+          <td><%= game.formatted_money(g.buy_in) %></td>
+          <td>Pot Size</td>
+          <td>Winner</td>
+          <td>Runner Up</td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% @games.each do |game| %>
+  <% present(game) do |g| %>
+    <%= g.formatted_date %> - <%= link_to "score game", new_league_game_player_path(game.league, game) %>
+  <% end %>
 <% end %>

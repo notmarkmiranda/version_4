@@ -1,6 +1,6 @@
 <% present(@game) do |game| %>
   <%= game.formatted_date %>
-  <%= game.formatted_money %>
+  <%= game.formatted_money(@game.buy_in) %>
 <% end %>
 <% @game.players.each do |player| %>
   <% present(player.participant) do |participant| %>

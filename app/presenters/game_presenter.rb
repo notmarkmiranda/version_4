@@ -3,7 +3,15 @@ class GamePresenter < BasePresenter
     date.strftime("%B %e, %Y")
   end
 
-  def formatted_money
-    h.number_to_currency(buy_in)
+  def players_or_attendees
+    completed ? player_count : attendees
+  end
+
+  def game_status
+    completed ? "Completed" : "Unscored"
+  end
+
+  def formatted_money(number)
+    h.number_to_currency(number)
   end
 end
