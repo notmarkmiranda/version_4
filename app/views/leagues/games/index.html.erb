@@ -1,4 +1,4 @@
-<table class="responsive-table">
+<table class="responsive-table striped centered">
   <thead>
     <tr>
       <th>#</th>
@@ -10,6 +10,7 @@
       <th>Pot Size</th>
       <th>Winner</th>
       <th>Runner Up</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -26,13 +27,9 @@
           <td>Pot Size</td>
           <td>Winner</td>
           <td>Runner Up</td>
+          <td><%= link_to "score game", new_league_game_player_path(game.league, game), class: "btn btn-poker" %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-<% @games.each do |game| %>
-  <% present(game) do |g| %>
-    <%= g.formatted_date %> - <%= link_to "score game", new_league_game_player_path(game.league, game) %>
-  <% end %>
-<% end %>
