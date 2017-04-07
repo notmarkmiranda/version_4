@@ -27,6 +27,10 @@ class League < ApplicationRecord
     name.parameterize
   end
 
+  def unscored_games
+    games.where(completed: false)
+  end
+
   private
 
   def slugify

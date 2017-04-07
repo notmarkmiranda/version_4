@@ -101,6 +101,16 @@ div.delete-div {
   display: inline
 }
 
+a.close-link {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+div.player-list > input.select-dropdown {
+  margin-bottom: 0px !important;
+}
+
 .picker__weekday-display {
   background-color: $quaternary-gold !important;
 }

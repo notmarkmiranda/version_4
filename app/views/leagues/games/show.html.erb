@@ -1,2 +1,12 @@
-<%= number_to_currency(@game.buy_in) %>
-<%= @game.date.strftime("%B %e, %Y") %>
+<% present(@game) do |game| %>
+  <%= game.formatted_date %>
+  <%= game.formatted_money(@game.buy_in) %>
+<% end %>
+<% @game.players.each do |player| %>
+  <% present(player.participant) do |participant| %>
+    <%= participant.full_name %> - <%= player.finishing_place %>
+    <% if @game.completed %>
+    &nbsp;- <%= player.score %>
+    <% end %>
+  <% end %>
+<% end %>

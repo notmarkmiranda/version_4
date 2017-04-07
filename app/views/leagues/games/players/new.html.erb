@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col l6 offset-l3 s12">
+      <h5>Score a Player</h5>
+      <div class="new-player">
+        <%= form_for [@league, @game, @player] do |f| %>
+          <div class="input-field">
+            <%= f.select :participant_id, current_user.participants.collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
+            <%= link_to "Create New Player", "#", class: "close-link" %>
+          </div>
+          <div class="input-field">
+            <%= f.select :finishing_place, [*1..@game.attendees], { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
+          </div>
+          <div class="input-field">
+            <%= f.text_field :additional_expense %>
+            <%= f.label :additional_expense, "Additional Buy-In or Add-Ons" %>
+          </div>
+          <div class="input-field">
+            <%= f.submit "Score Player", class: "btn btn-poker" %>
+          </div>
+        <% end %>
+        <div class="input-field">
+          <%= button_to "Finalize Game", league_game_path(@league, @game, type: "finalize"), method: :patch, class: "btn btn-poker" %>
+        </div>
+      </div>
+      <div class="scored-players">
+        <% @game.finished_players.each do |player| %>
+        <% present(player.participant) do |participant| %>
+        <%= participant.full_name %> - <%= player.finishing_place %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

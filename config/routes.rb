@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create]
   resources :leagues do
     scope module: :leagues do
-      resources :games
+      resources :games do
+        scope module: :games do
+          resources :players
+        end
+      end
     end
   end
   resources :games, only: [:index]
   resources :participants
+  resources :players, only: [:index]
 
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
