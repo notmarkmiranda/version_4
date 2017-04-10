@@ -5,7 +5,7 @@
       <div class="new-player">
         <%= form_for [@league, @game, @player] do |f| %>
           <div class="input-field">
-            <%= f.select :participant_id, current_user.participants.collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
+            <%= f.select :participant_id, current_user.unfinished_participants(@game).collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
             <%= link_to "Create New Player", "#", class: "close-link" %>
           </div>
           <div class="input-field">
@@ -23,13 +23,20 @@
           <%= button_to "Finalize Game", league_game_path(@league, @game, type: "finalize"), method: :patch, class: "btn btn-poker" %>
         </div>
       </div>
-      <div class="scored-players">
-        <% @game.finished_players.each do |player| %>
-        <% present(player.participant) do |participant| %>
-        <%= participant.full_name %> - <%= player.finishing_place %>
-        <% end %>
-        <% end %>
-      </div>
+      <% if @game.finished_players_count_greater_than_zero %>
+        <div class="scored-players">
+          <ul class="collection with-header">
+            <li class="collection-header"><h4>Finished Players</h4></li>
+
+          <% @game.finished_players.each do |player| %>
+            <% present(player.participant) do |participant| %>
+            <li class="collection-item"><span class="badge"><%= player.finishing_place %></span><%= participant.full_name %></li>
+            <% end %>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>

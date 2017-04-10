@@ -9,7 +9,11 @@ class Game < ApplicationRecord
   has_many :players
 
   def finished_players
-    players.where.not(finishing_place: nil)
+    players.where.not(finishing_place: nil).sort_by(&:finishing_place)
+  end
+
+  def finished_players_count_greater_than_zero
+    finished_players.count > 0
   end
 
   def player_count
