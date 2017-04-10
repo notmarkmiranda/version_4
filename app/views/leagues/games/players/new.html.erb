@@ -9,7 +9,7 @@
             <%= link_to "Create New Player", "#", class: "close-link" %>
           </div>
           <div class="input-field">
-            <%= f.select :finishing_place, [*1..@game.attendees], { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
+            <%= f.select :finishing_place, @game.available_places, { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
           </div>
           <div class="input-field">
             <%= f.text_field :additional_expense %>
