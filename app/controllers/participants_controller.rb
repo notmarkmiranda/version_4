@@ -12,13 +12,14 @@ class ParticipantsController < ApplicationController
   end
 
   def create
+    set_redirect
     @participant = current_user.participants.new(participant_params!)
     if @participant.save
       flash[:success] = "New Player Created!"
-      redirect_to @participant
+      redirect_to session[:redirect]
     else
       flash[:danger] = "Something went wrong!"
-      render :new
+      redirect_to session[:redirect]
     end
   end
 

@@ -6,7 +6,7 @@
         <%= form_for [@league, @game, @player] do |f| %>
           <div class="input-field">
             <%= f.select :participant_id, current_user.unfinished_participants(@game).collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
-            <%= link_to "Create New Player", "#", class: "close-link" %>
+            <a class="close-link" href="#modal1">Create New Player</a>
           </div>
           <div class="input-field">
             <%= f.select :finishing_place, @game.available_places, { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
@@ -30,5 +30,28 @@
       <% end %>
 
     </div>
+  </div>
+</div>
+
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Create a New Player</h4>
+    <%= form_for @participant do |f| %>
+      <div class="input-field">
+        <%= f.text_field :first_name %>
+        <%= f.label :first_name, "First Name" %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :last_name %>
+        <%= f.label :last_name, "Last Name" %>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <div class="input-field">
+      <%= f.submit "Create Player", class: "btn btn-poker" %>
+    </div>
+    <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
+    <% end %>
   </div>
 </div>
