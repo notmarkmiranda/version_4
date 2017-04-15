@@ -41,7 +41,7 @@ RSpec.describe ParticipantsController, type: :controller do
   it "POST create - happy template" do
     attrs = attributes_for(:participant)
     post :create, params: { participant: attrs }
-    expect(response).to redirect_to(participant_path(Participant.last))
+    expect(response).to redirect_to(root_path)
   end
 
   it "POST create - sad template" do

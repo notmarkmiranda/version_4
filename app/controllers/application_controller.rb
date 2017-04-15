@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   private
 
   def set_redirect
-    session[:redirect] = request.referer || root_path
+    if request.referer == new_participant_path
+      session[:redirect] = participants_path
+    else
+      session[:redirect] = request.referer || root_path
+    end
   end
 
   def current_user

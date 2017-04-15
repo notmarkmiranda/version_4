@@ -19,7 +19,7 @@ class ParticipantsController < ApplicationController
       redirect_to session[:redirect]
     else
       flash[:danger] = "Something went wrong!"
-      redirect_to session[:redirect]
+      render :new
     end
   end
 

@@ -5,6 +5,8 @@ RSpec.describe Leagues::Games::PlayersController, type: :controller do
     @game = create(:game)
     @league = @game.league
     @participant = create(:participant)
+    user = @participant.user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
   it "GET new - template" do

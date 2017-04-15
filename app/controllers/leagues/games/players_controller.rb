@@ -15,7 +15,7 @@ class Leagues::Games::PlayersController < ApplicationController
       redirect_to new_league_game_player_path(@league, @game)
     else
       flash[:danger] = "Something Went Wrong!"
-      redirect_to :new
+      render :new
     end
   end
 
