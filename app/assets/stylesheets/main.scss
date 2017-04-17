@@ -105,6 +105,9 @@ a.close-link {
   font-size: 0.7em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  &.delete {
+    color: red;
+  }
 }
 
 div.player-list > input.select-dropdown {
@@ -135,6 +138,10 @@ div.player-list > input.select-dropdown {
 span.badge.poker-gold {
   background-color: $primary-gold;
   color: white;
+}
+
+div.scored-players {
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 1000px) {

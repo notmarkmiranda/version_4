@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col l6 offset-l3 s12">
+      <h5>Edit a Player</h5>
+      <div class="edit-player">
+        <%= form_for [@league, @game, @player] do |f| %>
+          <div class="input-field">
+            <% present(@participant) do |p| %>
+              <%= p.full_name %>
+            <% end %>
+          </div>
+          <div class="input-field">
+            <%= f.select :finishing_place, [*1..@game.attendees], class: "input-field finishing-place" %>
+          </div>
+          <div class="input-field">
+            <%= f.text_field :additional_expense %>
+            <%= f.label :additional_expense, "Additional Buy-In or Add-Ons" %>
+          </div>
+          <div class="input-field">
+            <%= f.submit "Update Player", class: "btn btn-poker" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
