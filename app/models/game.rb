@@ -8,8 +8,18 @@ class Game < ApplicationRecord
   delegate :league, to: :season
   has_many :players
 
+  def available_places
+    available = [*1..attendees]
+    places = players.pluck(:finishing_place)
+    available - places
+  end
+
   def finished_players
-    players.where.not(finishing_place: nil)
+    players.where.not(finishing_place: nil).sort_by(&:finishing_place)
+  end
+
+  def finished_players_count_greater_than_zero
+    finished_players.count > 0
   end
 
   def player_count

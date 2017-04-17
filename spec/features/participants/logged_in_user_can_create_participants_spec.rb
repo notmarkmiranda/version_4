@@ -4,6 +4,7 @@ RSpec.describe "logged in user can create a participant" do
   before do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:set_redirect).and_return(user)
   end
 
   it "creates a new participant" do
@@ -17,7 +18,8 @@ RSpec.describe "logged in user can create a participant" do
     fill_in "Last Name", with: "Doe"
     click_button "Create Player!"
 
-    expect(current_path).to eq(participant_path(Participant.last))
+    expect(current_path).to eq(new_participant_path)
+    save_and_open_page
     expect(page).to have_content("John Doe")
   end
 end

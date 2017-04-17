@@ -132,6 +132,11 @@ div.player-list > input.select-dropdown {
   color: $primary-gold !important;
 }
 
+span.badge.poker-gold {
+  background-color: $primary-gold;
+  color: white;
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;

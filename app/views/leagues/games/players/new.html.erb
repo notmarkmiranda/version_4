@@ -5,11 +5,11 @@
       <div class="new-player">
         <%= form_for [@league, @game, @player] do |f| %>
           <div class="input-field">
-            <%= f.select :participant_id, current_user.participants.collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
-            <%= link_to "Create New Player", "#", class: "close-link" %>
+            <%= f.select :participant_id, current_user.unfinished_participants(@game).collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
+            <a class="close-link" href="#modal1">Create New Player</a>
           </div>
           <div class="input-field">
-            <%= f.select :finishing_place, [*1..@game.attendees], { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
+            <%= f.select :finishing_place, @game.available_places, { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
           </div>
           <div class="input-field">
             <%= f.text_field :additional_expense %>
@@ -20,16 +20,38 @@
           </div>
         <% end %>
         <div class="input-field">
-          <%= button_to "Finalize Game", league_game_path(@league, @game, type: "finalize"), method: :patch, class: "btn btn-poker" %>
+          <% if !@game.completed %>
+            <%= button_to "Finalize Game", league_game_path(@league, @game, type: "finalize"), method: :patch, class: "btn btn-poker" %>
+          <% end %>
         </div>
       </div>
-      <div class="scored-players">
-        <% @game.finished_players.each do |player| %>
-        <% present(player.participant) do |participant| %>
-        <%= participant.full_name %> - <%= player.finishing_place %>
-        <% end %>
-        <% end %>
-      </div>
+      <% if @game.finished_players_count_greater_than_zero %>
+        <%= render partial: "finished_players" %>
+      <% end %>
+
     </div>
+  </div>
+</div>
+
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Create a New Player</h4>
+    <%= form_for @participant do |f| %>
+      <div class="input-field">
+        <%= f.text_field :first_name %>
+        <%= f.label :first_name, "First Name" %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :last_name %>
+        <%= f.label :last_name, "Last Name" %>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <div class="input-field">
+      <%= f.submit "Create Player", class: "btn btn-poker" %>
+    </div>
+    <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
+    <% end %>
   </div>
 </div>

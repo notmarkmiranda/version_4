@@ -3,6 +3,7 @@ class Leagues::Games::PlayersController < ApplicationController
     @league = League.find_by_slug(params[:league_id])
     @game = Game.find(params[:game_id])
     @player = @game.players.new
+    @participant = current_user.participants.new
   end
 
   def create

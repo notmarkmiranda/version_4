@@ -6,6 +6,11 @@ class User < ApplicationRecord
   has_many :leagues
   has_many :participants
 
+  def unfinished_participants(game)
+    ids = participants.joins(:players).where(players: { game_id: game.id }).pluck(:id)
+    participants.where.not(id: ids)
+  end
+
   def no_leagues
     leagues.count == 0
   end

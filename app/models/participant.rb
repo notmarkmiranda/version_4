@@ -5,4 +5,5 @@ class Participant < ApplicationRecord
   validates_uniqueness_of :first_name , scope: :last_name
   belongs_to :user
   has_many :players
+
 end

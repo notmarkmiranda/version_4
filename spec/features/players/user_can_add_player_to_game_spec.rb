@@ -34,7 +34,7 @@ RSpec.describe "User can add player to game", type: :feature do
     click_button "Score Player"
 
     expect(current_path).to eq(new_league_game_player_path(@league, @game))
-    expect(page).to have_content("#{@participant_1.first_name} #{@participant_1.last_name} - 3")
+    expect(page).to have_content("3 #{@participant_1.first_name} #{@participant_1.last_name}")
 
     within("div.input-field.player-list") do
       find("input.select-dropdown").click
@@ -49,8 +49,8 @@ RSpec.describe "User can add player to game", type: :feature do
     click_button "Score Player"
 
     expect(current_path).to eq(new_league_game_player_path(@league, @game))
-    expect(page).to have_content("#{@participant_2.first_name} #{@participant_2.last_name} - 2")
 
+    expect(page).to have_content("2 #{@participant_2.first_name} #{@participant_2.last_name}")
     click_button "Finalize Game"
 
     expect(current_path).to eq(league_game_path(@league, @game))
