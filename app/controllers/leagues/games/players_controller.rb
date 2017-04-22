@@ -34,7 +34,17 @@ class Leagues::Games::PlayersController < ApplicationController
       flash[:success] = "Player Updated!"
       redirect_to new_league_game_player_path(@league, @game)
     else
+      flash[:danger] = "Something Went Wrong!"
+      redirect_to new_league_game_player_path(@league, @game)
     end
+  end
+
+  def destroy
+    @league = League.find_by_slug(params[:league_id])
+    @game = Game.find(params[:game_id])
+    Player.find(params[:id]).delete
+    flash[:success] = "Player Deleted!"
+    redirect_back(fallback_location: new_league_game_player_path(@league, @game))
   end
 
   private

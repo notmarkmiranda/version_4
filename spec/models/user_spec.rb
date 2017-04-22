@@ -25,5 +25,13 @@ RSpec.describe User, type: :model do
       create(:league, user: @user)
       expect(@user.no_leagues).to be(false)
     end
+
+    it "#unfinished_participants" do
+      league = create(:league, user: @user)
+      game   = create(:game, season: league.seasons.last)
+      participant_1, participant_2 = create_list(:participant, 2, user: @user)
+      player = create(:player, participant: participant_1, game: game)
+      expect(@user.unfinished_participants(game)).to eq([participant_2])
+    end
   end
 end
