@@ -19,6 +19,24 @@ class Leagues::Games::PlayersController < ApplicationController
     end
   end
 
+  def edit
+    @league = League.find_by_slug(params[:league_id])
+    @game   = Game.find(params[:game_id])
+    @player = Player.find(params[:id])
+    @participant = @player.participant
+  end
+
+  def update
+    @league = League.find_by_slug(params[:league_id])
+    @game   = Game.find(params[:game_id])
+    @player = Player.find(params[:id])
+    if @player.update(player_params!)
+      flash[:success] = "Player Updated!"
+      redirect_to new_league_game_player_path(@league, @game)
+    else
+    end
+  end
+
   private
 
   def player_params!

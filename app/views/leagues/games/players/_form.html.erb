@@ -1,0 +1,7 @@
+<div class="input-field">
+  <%= f.select :finishing_place, @game.available_places, { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
+</div>
+<div class="input-field">
+  <%= f.text_field :additional_expense %>
+  <%= f.label :additional_expense, "Additional Buy-In or Add-Ons" %>
+</div>

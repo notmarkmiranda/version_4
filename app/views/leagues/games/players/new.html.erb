@@ -8,13 +8,7 @@
             <%= f.select :participant_id, current_user.unfinished_participants(@game).collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
             <a class="close-link" href="#modal1">Create New Player</a>
           </div>
-          <div class="input-field">
-            <%= f.select :finishing_place, @game.available_places, { prompt: "Finishing Place" }, class: "input-field finishing-place" %>
-          </div>
-          <div class="input-field">
-            <%= f.text_field :additional_expense %>
-            <%= f.label :additional_expense, "Additional Buy-In or Add-Ons" %>
-          </div>
+          <%= render partial: "form", locals: { f:f } %>
           <div class="input-field">
             <%= f.submit "Score Player", class: "btn btn-poker" %>
           </div>
