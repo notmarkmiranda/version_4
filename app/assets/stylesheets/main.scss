@@ -105,9 +105,23 @@ a.close-link {
   font-size: 0.7em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  &.delete {
-    color: red;
-  }
+}
+
+input.close-button {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: red;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+form.button_to {
+  display: inline-block;
 }
 
 div.player-list > input.select-dropdown {

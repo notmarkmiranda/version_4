@@ -15,10 +15,6 @@ RSpec.describe "User can edit player ranking", type: :feature do
 
     expect(current_path).to eq(edit_league_game_player_path(@league, @game, @player))
 
-    # within("div.input-field.player-list") do
-    #   find("input-select-dropdown").click
-    #   find("li", text: @participant_1.first_name).click
-    # end
     find("input.select-dropdown").click
     find("li", text: "2").click
     fill_in "Additional Buy-In or Add-Ons", with: 1

@@ -36,5 +36,18 @@ RSpec.describe Game, type: :model do
       @player.reload
       expect(@player.score).to eq(4.74)
     end
+
+    it "#available_places" do
+      expect(@game.available_places.count).to eq(9)
+    end
+
+    it "#finished_players_count_greater_than_zero - true" do
+      expect(@game.finished_players_count_greater_than_zero).to be true
+    end
+
+    it "#finished_players_count_greater_than_zero - false" do
+      game_2 = create(:game)
+      expect(game_2.finished_players_count_greater_than_zero). to be false
+    end
   end
 end
