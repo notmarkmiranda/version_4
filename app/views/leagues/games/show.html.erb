@@ -10,3 +10,28 @@
     <% end %>
   <% end %>
 <% end %>
+
+<% present(@game) do |game| %>
+<div>
+  <div class="row">
+    <div class="col s12">
+      <h5><%= game.formatted_date %></h5>
+      <hr align="left" class="game-show">
+    </div>
+    <div class="col l4 s12">
+      one
+    </div>
+    <div class="col l4 s12">
+      two
+    </div>
+    <div class="col l4 s12">
+      three
+    </div>
+    <div class="col s12">
+      <hr align="left" class="game-show">
+      <h5><%= game.formatted_date %></h5>
+    </div>
+
+  </div>
+</div>
+<% end %>

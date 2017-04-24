@@ -158,6 +158,10 @@ div.scored-players {
   margin-top: 20px;
 }
 
+hr.game-show {
+  width: 90%;
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;
