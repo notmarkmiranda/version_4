@@ -8,10 +8,19 @@ class Game < ApplicationRecord
   delegate :league, to: :season
   has_many :players
 
+  def actual_pot
+    additional = players.pluck(:additional_expense).reduce(:+)
+    player_count * buy_in + additional
+  end
+
   def available_places
     available = [*1..attendees]
     places = players.pluck(:finishing_place)
     available - places
+  end
+
+  def estimated_or_pot
+    completed ? actual_pot : buy_in * attendees
   end
 
   def finished_players

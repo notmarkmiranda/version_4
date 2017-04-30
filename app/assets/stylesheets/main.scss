@@ -158,8 +158,18 @@ div.scored-players {
   margin-top: 20px;
 }
 
-hr.game-show {
-  width: 90%;
+div.game-third {
+  margin: 20px 0px 20px 0px;
+  &.stats {
+    font-size: 1.2em;
+    font-weight: lighter;
+  }
+}
+
+p.score {
+  font-size: 0.8em;
+  font-weight: lighter;
+  margin-top: -20px;
 }
 
 @media screen and (max-width: 1000px) {
