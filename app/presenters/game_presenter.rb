@@ -4,7 +4,7 @@ class GamePresenter < BasePresenter
   end
 
   def game_status
-    completed ? "Completed" : "Unscored"
+    completed ? "Completed" : "Incomplete"
   end
 
   def placed_player(place)

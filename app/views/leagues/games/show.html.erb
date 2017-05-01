@@ -4,18 +4,21 @@
       <div class="row">
         <div class="col s12">
           <h5><%= game.formatted_date %></h5>
+          <p class="sub-text"><%= game.players_formatted %></p>
           <hr align="left" class="game-show">
         </div>
         <div class="col l4 s12 game-third stats">
-          Winner: <%= game.placed_player(1) %><br />
-          Runner Up: <%= game.placed_player(2) %>
+
+          <b>Winner:</b> <%= game.placed_player(1) %><br />
+          <b>Runner Up:</b> <%= game.placed_player(2) %>
         </div>
         <div class="col l4 s12 game-third stats">
-          <%= game.players_formatted %><br />Status: <%= game.game_status %>
+          <b>Buy In:</b> <%= number_to_currency(game.buy_in) %><br />
+          <b>Status:</b> <%= game.game_status %>
         </div>
         <div class="col l4 s12 game-third stats">
-          Score deprication: <%= game.score_deprecation %> <br />
-          Pot size: <%= game.formatted_money(@game.estimated_or_pot) %>
+          <b>Score deprication:</b> <%= game.score_deprecation %> <br />
+          <b>Pot size:</b> <%= game.formatted_money(@game.estimated_or_pot) %>
         </div>
 
         <div class="col s12">

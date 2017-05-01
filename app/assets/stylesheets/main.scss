@@ -172,6 +172,13 @@ p.score {
   margin-top: -20px;
 }
 
+p.sub-text {
+  text-transform: uppercase;
+  font-weight: lighter;
+  margin-top: -10px;
+  color: $primary-gold;
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;
