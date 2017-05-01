@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'better_errors'
   gem 'listen', '~> 3.0.5'
 end
 

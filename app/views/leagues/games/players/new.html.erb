@@ -20,7 +20,7 @@
         </div>
       </div>
       <% if @game.finished_players_count_greater_than_zero %>
-        <%= render partial: "finished_players" %>
+        <%= render partial: "shared/finished_players", locals: { league: @league, scorable: true } %>
       <% end %>
 
     </div>

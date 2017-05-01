@@ -1,12 +1,35 @@
 <% present(@game) do |game| %>
-  <%= game.formatted_date %>
-  <%= game.formatted_money(@game.buy_in) %>
-<% end %>
-<% @game.players.each do |player| %>
-  <% present(player.participant) do |participant| %>
-    <%= participant.full_name %> - <%= player.finishing_place %>
-    <% if @game.completed %>
-    &nbsp;- <%= player.score %>
-    <% end %>
-  <% end %>
+  <div class="row">
+    <div class="col l10 offset-l1 s12 ">
+      <div class="row">
+        <div class="col s12">
+          <h5><%= game.formatted_date %></h5>
+          <p class="sub-text"><%= game.players_formatted %></p>
+          <hr align="left" class="game-show">
+        </div>
+        <div class="col l4 s12 game-third stats">
+
+          <b>Winner:</b> <%= game.placed_player(1) %><br />
+          <b>Runner Up:</b> <%= game.placed_player(2) %>
+        </div>
+        <div class="col l4 s12 game-third stats">
+          <b>Buy In:</b> <%= number_to_currency(game.buy_in) %><br />
+          <b>Status:</b> <%= game.game_status %>
+        </div>
+        <div class="col l4 s12 game-third stats">
+          <b>Score deprication:</b> <%= game.score_deprecation %> <br />
+          <b>Pot size:</b> <%= game.formatted_money(@game.estimated_or_pot) %>
+        </div>
+
+        <div class="col s12">
+          <hr align="left" class="game-show">
+          <% if @game.finished_players_count_greater_than_zero %>
+            <div class="col s12">
+              <%= render partial: "shared/finished_players", locals: { league: @game.league, scorable: false } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>

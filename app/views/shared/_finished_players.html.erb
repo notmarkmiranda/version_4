@@ -1,0 +1,24 @@
+<div class="scored-players">
+  <ul class="collection with-header">
+    <li class="collection-header">
+      <h4>Scored Players</h4>
+    </li>
+    <% @game.finished_players.each do |player| %>
+      <% present(player.participant) do |participant| %>
+        <li class="collection-item">
+          <span class="badge poker-gold"><%= player.finishing_place %></span>
+          <p><%= participant.full_name %></p>
+          <p class="score">Score: </p>
+          <% if scorable %>
+            <div>
+              <%= link_to "[Edit]", edit_league_game_player_path(league, @game, player), class: "close-link" %>
+              <span class="tooltipped" data-tooltip="are you really sure you want to delete this?!">
+                <%= button_to "[Delete]", league_game_player_path(league, @game, player), method: :delete, class: "close-button delete"  %>
+              </span>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
