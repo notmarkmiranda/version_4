@@ -158,6 +158,20 @@ div.scored-players {
   margin-top: 20px;
 }
 
+div.game-third {
+  margin: 20px 0px 20px 0px;
+  &.stats {
+    font-size: 1.2em;
+    font-weight: lighter;
+  }
+}
+
+p.score {
+  font-size: 0.8em;
+  font-weight: lighter;
+  margin-top: -20px;
+}
+
 @media screen and (max-width: 1000px) {
   a.nav-link, .dropdown-content li > a.nav-link {
     font-size: 0.1em;
