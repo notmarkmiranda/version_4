@@ -24,8 +24,4 @@ class GamePresenter < BasePresenter
     h.pluralize(players_or_attendees, "player")
   end
 
-  def score_deprecation
-    numerator = (season.games.pluck(:id).index(self.id) + 1)
-    h.number_to_percentage(100 - (numerator / season.game_count.to_f * 100), precision: 1)
-  end
 end

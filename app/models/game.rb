@@ -35,4 +35,9 @@ class Game < ApplicationRecord
     players.count
   end
 
+  def score_deprecation
+    numerator = (season.games.pluck(:id).index(self.id) + 1)
+    100 - ((numerator / season.game_count.to_f * 100) * 100).floor / 100.0
+  end
+
 end

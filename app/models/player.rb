@@ -7,8 +7,8 @@ class Player < ApplicationRecord
   belongs_to :game
 
   def score
-    score = score_math
-    (score * 100).floor / 100.0
+    weighted_score = score_math
+    (weighted_score * 100).floor / 100.0
   end
 
   private
@@ -19,6 +19,7 @@ class Player < ApplicationRecord
     total_expense = buy_in + additional_expense
     numerator     = (player_count * buy_in ** 2 / total_expense)
     denominator   = (finishing_place + 1.0)
-    Math.sqrt(numerator) / (denominator)
+    score = Math.sqrt(numerator) / (denominator)
+    weighted_score = score - (score * game.score_deprecation)
   end
 end
