@@ -6,7 +6,7 @@ class Player < ApplicationRecord
   belongs_to :participant
   belongs_to :game
 
-  def get_score
+  def score
     score = score_math
     (score * 100).floor / 100.0
   end

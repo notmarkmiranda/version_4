@@ -35,9 +35,4 @@ class Game < ApplicationRecord
     players.count
   end
 
-  def score_game
-    players.each do |player|
-      player.update(score: player.get_score)
-    end
-  end
 end
