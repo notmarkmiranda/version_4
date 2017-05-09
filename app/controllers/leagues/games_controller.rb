@@ -31,7 +31,6 @@ class Leagues::GamesController < ApplicationController
     @league = League.find_by_slug(params[:league_id])
     @game = Game.find(params[:id])
     if params[:type] == "finalize"
-      @game.score_game
       @game.update(completed: true)
       flash[:success] = "Your game has been scored"
       redirect_to league_game_path(@league, @game)

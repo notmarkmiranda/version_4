@@ -17,7 +17,7 @@
           <b>Status:</b> <%= game.game_status %>
         </div>
         <div class="col l4 s12 game-third stats">
-          <b>Score deprication:</b> <%= game.score_deprecation %> <br />
+          <b>Score deprication:</b> <%= number_to_percentage(@game.score_deprecation) %> <br />
           <b>Pot size:</b> <%= game.formatted_money(@game.estimated_or_pot) %>
         </div>
 
