@@ -14,12 +14,12 @@ class Player < ApplicationRecord
   private
 
   def score_math
-    player_count  = game.player_count
-    buy_in        = game.buy_in
-    total_expense = buy_in + additional_expense
-    numerator     = (player_count * buy_in ** 2 / total_expense)
-    denominator   = (finishing_place + 1.0)
-    score = Math.sqrt(numerator) / (denominator)
+    player_count   = game.player_count
+    buy_in         = game.buy_in
+    total_expense  = buy_in + additional_expense
+    numerator      = (player_count * buy_in ** 2 / total_expense)
+    denominator    = (finishing_place + 1.0)
+    score          = Math.sqrt(numerator) / (denominator)
     weighted_score = score - (score * game.score_deprecation)
   end
 end
