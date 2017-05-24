@@ -24,7 +24,7 @@
         <div class="col s12">
           <hr align="left" class="game-show">
           <% if @game.finished_players_count_greater_than_zero %>
-            <div class="col s12">
+            <div class="col m10 offset-m1 s12">
               <%= render partial: "shared/finished_players", locals: { league: @game.league, scorable: false } %>
             </div>
           <% end %>
