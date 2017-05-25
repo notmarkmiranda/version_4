@@ -5,6 +5,12 @@ class Player < ApplicationRecord
 
   belongs_to :participant
   belongs_to :game
+  delegate :season, to: :game
+  delegate :league, to: :season
+
+  def raw_score
+    score * (1 - game.score_deprecation / 100.0)
+  end
 
   def score
     weighted_score = score_math

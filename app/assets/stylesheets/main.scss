@@ -4,6 +4,10 @@ $tertiary-grey: #C5C5C5;
 $quaternary-gold: #7C6100;
 // quinary
 
+// html, body {
+//   font-family: 'Roboto', sans-serif !important;
+// }
+
 h1, h2, h3, h4, h5, h6 {
   color: $secondary-grey;
 }
@@ -35,6 +39,41 @@ main.container {
   &:hover {
     background-color: $quaternary-gold;
   }
+}
+
+.fa-xl {
+  font-size: 8em;
+}
+
+h4.stat-title {
+  margin-bottom: 0px;
+  font-weight: 300;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.landing-component {
+  > div > h3.column-title {
+    margin-bottom: 0px;
+    font-weight: 300;
+    font-size: 1.5em;
+  }
+  > .best-player > span > i.fa-circle {
+    color: #C5C5C5;
+  }
+  > .biggest-game > span > i.fa-circle {
+    color: #4c5b61;
+  }
+  > .current-season > span > i.fa-circle {
+    color: #829191;
+  }
+}
+
+span.stat {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #5d5d5d;
+  font-size: 0.7em;
 }
 
 .input-field label {
@@ -70,7 +109,7 @@ main.container {
   box-shadow: 0 1px 0 0 $primary-gold !important;
 }
 
-div.card-content > div.league-actions > a.action, div.edit-league-show {
+div.card-content > div.league-actions > a.action, div.edit-league-show, a.action {
   font-size: 0.8em;
   font-weight: 400;
   text-transform: uppercase;
