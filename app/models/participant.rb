@@ -9,6 +9,7 @@ class Participant < ApplicationRecord
   def global_attendance(league)
     (player_count / league.game_count.to_f) * 100
   end
+
   def global_score(league)
     players.sum(&:raw_score) / player_count
   end
