@@ -31,6 +31,10 @@ class Game < ApplicationRecord
     finished_players.count > 0
   end
 
+  def in_place(place)
+    players.where(finishing_place: place).first
+  end
+
   def player_count
     players.count
   end

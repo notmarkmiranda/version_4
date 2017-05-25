@@ -16,6 +16,10 @@ class GamePresenter < BasePresenter
     h.number_to_currency(number)
   end
 
+  def formatted_pot
+    h.number_to_currency(actual_pot, precision: 0)
+  end
+
   def players_or_attendees
     completed ? player_count : attendees
   end

@@ -1,0 +1,43 @@
+<div class="biggest-game center-align">
+  <h3 class="column-title">BIGGEST GAME</h3>
+  <span class="fa-stack fa-lg fa-xl">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-dollar fa-stack-1x fa-inverse"></i>
+  </span>
+  <% present(@league.biggest_game) do |game| %>
+  <h4><span class="stat"><%= game.formatted_date %></span></h4>
+  <div class="stats">
+    <table>
+      <thead>
+        <tr>
+          <th>Stat</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pot Size:</td>
+          <td><%= game.formatted_pot %></td>
+        </tr>
+        <tr>
+          <td>Number of Players:</td>
+          <td><%= game.players_or_attendees %></td>
+        </tr>
+        <tr>
+          <td>Winner:</td>
+          <td><%= present(game.in_place(1).participant) { |p| p.short_name } %></td>
+        </tr>
+        <tr>
+          <td>Runner Up:</td>
+          <td><%= present(game.in_place(2).participant) { |p| p.short_name } %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+  </div>
+  <div class="link">
+    <p><%= link_to "check out the other games", "#", class: "action" %></p>
+  </div>
+</div>
+<hr>

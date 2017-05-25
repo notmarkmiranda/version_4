@@ -7,12 +7,28 @@ class League < ApplicationRecord
   has_many :seasons, dependent: :destroy
   has_many :games, through: :seasons
 
+  def biggest_game
+    games.max_by(&:actual_pot)
+  end
+
   def current_season
     seasons.where(active: true).first
   end
 
   def current_season_games
     current_season.games
+  end
+
+  def game_count
+    games.count
+  end
+
+  def leader
+    user.participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
+  end
+
+  def participant_count(user)
+    user.participants.count
   end
 
   def seasons_count
