@@ -26,6 +26,5 @@ class Player < ApplicationRecord
     numerator      = (player_count * buy_in ** 2 / total_expense)
     denominator    = (finishing_place + 1.0)
     score          = Math.sqrt(numerator) / (denominator)
-    weighted_score = score - (score * game.score_deprecation)
   end
 end

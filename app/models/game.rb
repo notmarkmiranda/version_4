@@ -9,8 +9,7 @@ class Game < ApplicationRecord
   has_many :players
 
   def actual_pot
-    additional = players.pluck(:additional_expense).reduce(:+)
-    player_count * buy_in + additional
+    players.count > 0 ? pot_calculator : 0
   end
 
   def available_places
@@ -37,6 +36,11 @@ class Game < ApplicationRecord
 
   def player_count
     players.count
+  end
+
+  def pot_calculator
+    additional = players.pluck(:additional_expense).reduce(:+)
+    player_count * buy_in + additional
   end
 
   def score_deprecation

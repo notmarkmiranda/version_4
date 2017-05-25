@@ -26,5 +26,12 @@ RSpec.describe Player, type: :model do
     it "#score" do
       expect(@player.score).to eq(4.74)
     end
+
+    it "#raw_score" do
+      season = @player.game.season
+      expect(@player.raw_score).to eq(4.74)
+      game_2 = create(:game, season: season)
+      expect(@player.raw_score).to eq(2.37)
+    end
   end
 end

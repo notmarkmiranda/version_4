@@ -2,6 +2,7 @@ class Season < ApplicationRecord
   belongs_to :league
   has_many :games
   has_many :players, through: :games
+  has_many :participants, through: :players
 
   def average_pot_size
     total_pot_size / game_count.to_f
@@ -12,8 +13,7 @@ class Season < ApplicationRecord
   end
 
   def leader
-    season_participants = Participant.joins(:players).uniq
-    season_participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
+    participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
   end
 
   def player_count

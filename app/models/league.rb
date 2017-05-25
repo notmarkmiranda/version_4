@@ -24,10 +24,10 @@ class League < ApplicationRecord
   end
 
   def leader
-    user.participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
+    user.participants.joins(:players).empty? ? nil : user.participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
   end
 
-  def participant_count(user)
+  def participant_count
     user.participants.count
   end
 
