@@ -6,6 +6,7 @@ class Participant < ApplicationRecord
   belongs_to :user
   has_many :players
 
+
   def global_attendance(league)
     (player_count / league.game_count.to_f) * 100
   end
@@ -19,7 +20,7 @@ class Participant < ApplicationRecord
   end
 
   def longest_streak(league)
-    eligible_players = players.joins(:game).where("games.season_id = ?", league.season_ids).pluck(:finishing_place)
+    eligible_players = players.joins(:game).where("games.season_id IN (?)", league.season_ids).pluck(:finishing_place)
     eligible_players.chunk do |place|
       place == 1 || place == 2 || place == 3
     end.map { |_, x| x.size }.max

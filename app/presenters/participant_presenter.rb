@@ -8,7 +8,7 @@
   end
 
   def global_weighted_score(league)
-    @model.global_score(league)
+    (@model.global_score(league) * 100).floor / 100.0
   end
 
   def global_win_or_placed_percentage(league)
