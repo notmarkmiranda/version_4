@@ -5,7 +5,7 @@ class Season < ApplicationRecord
   has_many :participants, through: :players
 
   def average_pot_size
-    total_pot_size / game_count.to_f
+    game_count == 0 ? 0.0 : total_pot_size / game_count.to_f
   end
 
   def game_count
@@ -21,7 +21,7 @@ class Season < ApplicationRecord
   end
 
   def players_per_game
-    player_count / game_count.to_f
+    game_count == 0 ? 0.0 : player_count / game_count.to_f
   end
 
   def total_pot_size
