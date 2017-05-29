@@ -4,6 +4,8 @@
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
   </span>
+
+
   <% present(@league.current_season) do |season| %>
   <h4><span class="stat"><%= season.games_count_formatter %></span></h4>
   <div class="stats">
@@ -29,7 +31,13 @@
         </tr>
         <tr>
           <td>Season Leader:</td>
-          <td><%= present(season.leader) { |participant| participant.short_name } %></td>
+          <td>
+            <% if season.leader %>
+              <%= present(season.leader) { |participant| participant.short_name } %>
+            <% else %>
+              NO ONE
+            <% end %>
+          </td>
           <% end %>
         </tr>
       </tbody>

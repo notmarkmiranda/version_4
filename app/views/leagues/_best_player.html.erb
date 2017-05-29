@@ -4,40 +4,45 @@
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-user-secret fa-stack-1x fa-inverse"></i>
   </span>
-  <% present(@league.leader) do |leader| %>
-  <h4><span class="stat"><%= leader.full_name %></span></h4>
-  <div class="stats">
-    <table>
-      <thead>
-        <tr>
-          <th>Stat</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Won or Placed:</td>
-          <td><%= leader.global_win_or_placed_percentage(@league) %></td>
-        </tr>
-        <tr>
-          <td>Has Played In:</td>
-          <td><%= leader.global_attendance_percentage(@league) %></td>
-        </tr>
-        <tr>
-          <td>Score:</td>
-          <td><%= leader.global_weighted_score(@league) %></td>
-        </tr>
-        <tr>
-          <td>Longest Money Streak:</td>
-          <td><%= leader.longest_streak(@league) %></td>
-        </tr>
-      </tbody>
-    </table>
+
+  <% if @league.leader %>
+    <% present(@league.leader) do |leader| %>
+      <h4><span class="stat"><%= leader.full_name %></span></h4>
+      <div class="stats">
+        <table>
+          <thead>
+            <tr>
+              <th>Stat</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Won or Placed:</td>
+              <td><%= leader.global_win_or_placed_percentage(@league) %></td>
+            </tr>
+            <tr>
+              <td>Has Played In:</td>
+              <td><%= leader.global_attendance_percentage(@league) %></td>
+            </tr>
+            <tr>
+              <td>Score:</td>
+              <td><%= leader.global_weighted_score(@league) %></td>
+            </tr>
+            <tr>
+              <td>Longest Money Streak:</td>
+              <td><%= leader.longest_streak(@league) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div class="link">
+        <p><%= link_to "Here are the losers", participants_path, class: "action" %></p>
+      </div>
+      <hr>
     <% end %>
-    <hr>
-  </div>
-  <div class="link">
-    <p><%= link_to "Here are the losers", participants_path, class: "action" %></p>
-  </div>
+  <% else %>
+    <h4><span class="stat">EVERYONE SUCKS</span></h4>
+  <% end %>
 </div>
-<hr>

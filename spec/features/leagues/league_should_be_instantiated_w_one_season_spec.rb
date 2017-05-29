@@ -13,6 +13,7 @@ RSpec.describe "a league should be instantiated with one season", type: :feature
     click_button "Create League!"
 
     expect(current_path).to eq(league_path(League.last))
-    expect(page).to have_content("# of seasons: 1")
+    expect(page).to have_content("0 games")
+    expect(page).to have_content("NO ONE")
   end
 end
