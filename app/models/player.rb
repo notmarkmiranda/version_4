@@ -8,13 +8,13 @@ class Player < ApplicationRecord
   delegate :season, to: :game
   delegate :league, to: :season
 
-  def raw_score
-    score * (1 - game.score_deprecation / 100.0)
-  end
+  # def raw_score
+  #   score * (1 - game.score_deprecation / 100.0)
+  # end
 
   def score
     weighted_score = score_math
-    (weighted_score * 100).floor / 100.0
+    (weighted_score * 1000).floor / 1000.0
   end
 
   private
@@ -23,8 +23,11 @@ class Player < ApplicationRecord
     player_count   = game.player_count
     buy_in         = game.buy_in
     total_expense  = buy_in + additional_expense
-    numerator      = (player_count * buy_in ** 2 / total_expense)
+    numerator      = (player_count * buy_in * (buy_in / total_expense.to_f))
     denominator    = (finishing_place + 1.0)
     score          = Math.sqrt(numerator) / (denominator)
   end
 end
+
+
+# =SQRT((COUNTIF(A:A, A2) * 15 * 15 / (15+D2))) / (B2 + 1)

@@ -20,18 +20,20 @@ RSpec.describe Player, type: :model do
 
   context "methods" do
     before do
-      @player = create(:player)
+      game = create(:game, buy_in: 15)
+      @player = create(:player, game: game, additional_expense:0)
+      @player_2 = create(:player, game: game, additional_expense: 0, finishing_place: 2)
+      @player_3 = create(:player, game: game, additional_expense: 0, finishing_place: 3)
     end
 
     it "#score" do
-      expect(@player.score).to eq(4.74)
+      expect(@player.score).to eq(3.354)
+      expect(@player_2.score).to eq(2.236)
+      expect(@player_3.score).to eq(1.677)
     end
 
-    it "#raw_score" do
-      season = @player.game.season
-      expect(@player.raw_score).to eq(4.74)
-      game_2 = create(:game, season: season)
-      expect(@player.raw_score).to eq(2.37)
+    it "#past_season_scores" do
+      
     end
   end
 end
