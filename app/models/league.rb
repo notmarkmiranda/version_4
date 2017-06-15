@@ -50,7 +50,7 @@ class League < ApplicationRecord
   private
 
   def participant_sum_score(part)
-    part.players.count == 0 ? 0 : part.players.sum(&:score) / part.players.count
+    part.players.count == 0 ? 0 : part.players.last(10).sum(&:score) / 10
   end
 
   def slugify
