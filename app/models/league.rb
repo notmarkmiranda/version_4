@@ -24,7 +24,7 @@ class League < ApplicationRecord
   end
 
   def leader
-    user.participants.joins(:players).empty? ? nil : user.participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
+    user.participants.joins(:players).empty? ? nil : user.participants.max_by { |part| participant_sum_score(part) }
   end
 
   def participant_count
@@ -48,6 +48,10 @@ class League < ApplicationRecord
   end
 
   private
+
+  def participant_sum_score(part)
+    part.players.count == 0 ? 0 : part.players.sum(&:score) / part.players.count
+  end
 
   def slugify
     self.slug = to_param
