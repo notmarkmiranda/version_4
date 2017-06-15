@@ -12,7 +12,7 @@ class Participant < ApplicationRecord
   end
 
   def global_score(league)
-    players.sum(&:raw_score) / player_count
+    players.sum(&:score) / player_count
   end
 
   def global_win_or_placed(league)

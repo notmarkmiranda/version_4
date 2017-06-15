@@ -13,7 +13,7 @@ class Season < ApplicationRecord
   end
 
   def leader
-    participants.max_by { |part| part.players.sum(&:raw_score) / part.players.count }
+    participants.max_by { |part| part.players.sum(&:score) / part.players.count }
   end
 
   def player_count

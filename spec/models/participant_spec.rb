@@ -31,7 +31,7 @@ RSpec.describe Participant, type: :model do
       game_1 = create(:game, season: @season)
       player_1 = create(:player, participant: @participant, game: game_1)
 
-      expect(@participant.global_score(@league)).to eq(4.74)
+      expect(@participant.global_score(@league)).to eq(4.767)
     end
 
     it "#global_win_or_placed - 100%" do

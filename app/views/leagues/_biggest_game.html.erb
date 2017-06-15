@@ -27,11 +27,15 @@
           </tr>
           <tr>
             <td>Winner:</td>
+            <% if game.in_place(1) %>
             <td><%= present(game.in_place(1).participant) { |p| p.short_name } %></td>
+            <% end %>
           </tr>
           <tr>
             <td>Runner Up:</td>
+            <% if game.in_place(2) %>
             <td><%= present(game.in_place(2).participant) { |p| p.short_name } %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
