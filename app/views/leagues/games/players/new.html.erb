@@ -5,7 +5,7 @@
       <div class="new-player">
         <%= form_for [@league, @game, @player] do |f| %>
           <div class="input-field">
-            <%= f.select :participant_id, current_user.unfinished_participants(@game).collect { |p| [p.first_name, p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
+            <%= f.select :participant_id, current_user.unfinished_participants(@game).collect { |p| ["#{p.first_name} #{p.last_name}", p.id]}, { prompt: "Select Player" }, class: "input-field player-list" %>
             <a class="close-link" href="#modal1">Create New Player</a>
           </div>
           <%= render partial: "form", locals: { f:f } %>
